@@ -1,0 +1,10 @@
+.container {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: max-content 1fr min-content;
+  gap: 8px;
+}
+
+.input {
+  width: 100%;
+}

@@ -1,0 +1,29 @@
+{
+  "applicationName": {
+    "message": "リンク取得"
+  },
+  "copied": {
+    "message": "Copied"
+  },
+  "copy": {
+    "message": "Copy"
+  },
+  "description": {
+    "message": "閲覧中のページのURLとタイトルを取得します。"
+  },
+  "html": {
+    "message": "HTML"
+  },
+  "loading": {
+    "message": "読み込み中"
+  },
+  "markdown": {
+    "message": "Markdown"
+  },
+  "plaintext": {
+    "message": "プレーンテキスト"
+  },
+  "textile": {
+    "message": "Textile"
+  }
+}

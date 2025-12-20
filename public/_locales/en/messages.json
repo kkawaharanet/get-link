@@ -1,0 +1,29 @@
+{
+  "applicationName": {
+    "message": "Get links"
+  },
+  "copied": {
+    "message": "Copied"
+  },
+  "copy": {
+    "message": "Copy"
+  },
+  "description": {
+    "message": "Get links"
+  },
+  "html": {
+    "message": "HTML"
+  },
+  "loading": {
+    "message": "Loading"
+  },
+  "markdown": {
+    "message": "Markdown"
+  },
+  "plaintext": {
+    "message": "Plain text"
+  },
+  "textile": {
+    "message": "Textile"
+  }
+}
