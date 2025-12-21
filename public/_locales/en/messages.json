@@ -11,6 +11,12 @@
   "description": {
     "message": "Get links"
   },
+  "enable": {
+    "message": "Enable"
+  },
+  "format": {
+    "message": "Format"
+  },
   "html": {
     "message": "HTML"
   },
@@ -22,6 +28,9 @@
   },
   "plaintext": {
     "message": "Plain text"
+  },
+  "queryParameters": {
+    "message": "Query parameters"
   },
   "textile": {
     "message": "Textile"

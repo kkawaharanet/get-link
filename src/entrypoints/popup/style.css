@@ -14,6 +14,5 @@ body {
 
 #root {
   min-width: 300px;
-  min-height: 100px;
   flex: 1;
 }

@@ -3,13 +3,19 @@
     "message": "リンク取得"
   },
   "copied": {
-    "message": "Copied"
+    "message": "コピー済"
   },
   "copy": {
-    "message": "Copy"
+    "message": "コピー"
   },
   "description": {
     "message": "閲覧中のページのURLとタイトルを取得します。"
+  },
+  "enable": {
+    "message": "有効にする"
+  },
+  "format": {
+    "message": "形式"
   },
   "html": {
     "message": "HTML"
@@ -22,6 +28,9 @@
   },
   "plaintext": {
     "message": "プレーンテキスト"
+  },
+  "queryParameters": {
+    "message": "クエリパラメータ"
   },
   "textile": {
     "message": "Textile"

@@ -1,14 +1,27 @@
 import { Link } from "./link";
+import { getLink } from "./link-functions";
 
-export interface LinkService {
+export interface ILinkServiceState {
+  loading: boolean;
   link: Link;
 }
 
-export function getLinkService(): Promise<LinkService> {
-  return new Promise((resolve) => {
-    browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const { url, title } = tabs.at(0)!;
-      resolve({ link: { url: url ?? "", title: title ?? "" } });
-    });
+export interface ILinkService {
+  loading: boolean;
+  link: Link;
+}
+
+export function useLinkService(): ILinkService {
+  const [state, setState] = useState<ILinkServiceState>({
+    loading: true,
+    link: { url: "", title: "" },
   });
+
+  useEffect(() => {
+    Promise.all([getLink()]).then(([link]) => {
+      setState({ loading: false, link });
+    });
+  }, []);
+
+  return { loading: state.loading, link: state.link };
 }
