@@ -34,5 +34,20 @@
   },
   "textile": {
     "message": "Textile"
+  },
+  "link": {
+    "message": "Link"
+  },
+  "linksInPage": {
+    "message": "Links in page"
+  },
+  "get": {
+    "message": "Get"
+  },
+  "csv": {
+    "message": "CSV"
+  },
+  "tsv": {
+    "message": "TSV"
   }
 }

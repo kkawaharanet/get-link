@@ -18,9 +18,10 @@ export function useLinkService(): ILinkService {
   });
 
   useEffect(() => {
-    Promise.all([getLink()]).then(([link]) => {
+    (async () => {
+      const link = await getLink();
       setState({ loading: false, link });
-    });
+    })();
   }, []);
 
   return { loading: state.loading, link: state.link };

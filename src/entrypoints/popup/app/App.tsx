@@ -1,4 +1,5 @@
-import { linkToString } from "@/link/link-functions";
+import { Link } from "@/link/link";
+import { getLinksInTab, linkToString } from "@/link/link-functions";
 import { LINK_TYPES, LinkType } from "@/link/link-type";
 import { LinkServiceContext } from "@/link/LinkServiceProvider";
 import { PreferencesServiceContext } from "@/preferences/PreferencesServiceProvider";
@@ -6,15 +7,22 @@ import { ChangeEvent, use } from "react";
 import { Loading } from "../loading/Loading";
 import styles from "./App.module.css";
 
-export function App() {
-  const linkService = use(LinkServiceContext);
+const APP_TABS = ["link", "linksInPage"] as const;
+type AppTab = (typeof APP_TABS)[number];
+
+interface LinkTabProps {
+  value: string;
+}
+
+function LinkTab(props: LinkTabProps) {
   const preferencesService = use(PreferencesServiceContext);
-  const loading = linkService.loading || preferencesService.loading;
   const [copied, setCopied] = useState(false);
 
-  function handleFocus(
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
+  useEffect(() => {
+    setCopied(false);
+  }, [preferencesService.preferences]);
+
+  function handleFocus(event: React.FocusEvent<HTMLTextAreaElement>) {
     event.target.select();
   }
 
@@ -24,12 +32,90 @@ export function App() {
     });
   }
 
+  return (
+    <>
+      <textarea
+        value={props.value}
+        onFocus={handleFocus}
+        className={styles.input}
+        rows={8}
+        readOnly
+      />
+      <button onClick={() => handleCopy(props.value)}>
+        {browser.i18n.getMessage(copied ? "copied" : "copy")}
+      </button>
+    </>
+  );
+}
+
+function LinksInPageTab() {
+  const preferencesService = use(PreferencesServiceContext);
+  const [links, setLinks] = useState<Link[]>([]);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setCopied(false);
+  }, [preferencesService.preferences]);
+
+  function handleFocus(event: React.FocusEvent<HTMLTextAreaElement>) {
+    event.target.select();
+  }
+
+  function handleCopy(text: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+    });
+  }
+
+  async function handleGetLinksClick() {
+    setLinks(await getLinksInTab());
+  }
+
+  if (links?.length <= 0) {
+    return (
+      <button onClick={handleGetLinksClick}>
+        {browser.i18n.getMessage("get")}
+      </button>
+    );
+  }
+
+  const value = links
+    .map((l) =>
+      linkToString(
+        l,
+        preferencesService.preferences.linkType,
+        !preferencesService.preferences.queryParameters
+      )
+    )
+    .join("\n");
+
+  return (
+    <>
+      <textarea
+        value={value}
+        onFocus={handleFocus}
+        className={styles.input}
+        rows={8}
+        readOnly
+      />
+      <button onClick={() => handleCopy(value)}>
+        {browser.i18n.getMessage(copied ? "copied" : "copy")}
+      </button>
+    </>
+  );
+}
+
+export function App() {
+  const linkService = use(LinkServiceContext);
+  const preferencesService = use(PreferencesServiceContext);
+  const [activeTab, setActiveTab] = useState<AppTab>("link");
+  const loading = linkService.loading || preferencesService.loading;
+
   function handleChangeLinkType(event: ChangeEvent<HTMLSelectElement>) {
     preferencesService.setPreferences({
       ...preferencesService.preferences,
       linkType: event.target.value as LinkType,
     });
-    setCopied(false);
   }
 
   function handleChangeQueryParameters(event: ChangeEvent<HTMLInputElement>) {
@@ -37,7 +123,6 @@ export function App() {
       ...preferencesService.preferences,
       queryParameters: event.target.checked,
     });
-    setCopied(false);
   }
 
   if (loading) {
@@ -56,6 +141,17 @@ export function App() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.tabContainer}>
+        {APP_TABS.map((appTab) => (
+          <button
+            onClick={() => setActiveTab(appTab)}
+            className={styles.tabButton}
+            disabled={appTab === activeTab}
+          >
+            {browser.i18n.getMessage(appTab)}
+          </button>
+        ))}
+      </div>
       <dl className={styles.preferencesContainer}>
         <dt>{browser.i18n.getMessage("format")}</dt>
         <dd>
@@ -85,16 +181,8 @@ export function App() {
           </div>
         </dd>
       </dl>
-      <textarea
-        value={text}
-        onFocus={handleFocus}
-        className={styles.input}
-        rows={8}
-        readOnly
-      />
-      <button onClick={() => handleCopy(text)}>
-        {browser.i18n.getMessage(copied ? "copied" : "copy")}
-      </button>
+      {activeTab === "link" && <LinkTab value={text} />}
+      {activeTab === "linksInPage" && <LinksInPageTab />}
     </div>
   );
 }

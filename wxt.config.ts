@@ -9,7 +9,7 @@ export default defineConfig({
     version: "3.0.0",
     description: "__MSG_description__",
     default_locale: "ja",
-    permissions: ["storage", "tabs"],
+    permissions: ["scripting", "storage", "activeTab"],
     action: {
       default_title: "リンク取得",
       default_popup: "index.html",

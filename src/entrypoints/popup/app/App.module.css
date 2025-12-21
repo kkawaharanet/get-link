@@ -5,6 +5,27 @@
   gap: 8px;
 }
 
+.tabContainer {
+  display: flex;
+}
+
+.tabButton {
+  flex: 1;
+
+  font-size: 100%;
+  background-color: transparent;
+  border-radius: 4px;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    cursor: default;
+  }
+}
+
 .preferencesContainer {
   display: grid;
   grid-template-columns: max-content 1fr;

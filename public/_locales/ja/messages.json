@@ -34,5 +34,20 @@
   },
   "textile": {
     "message": "Textile"
+  },
+  "link": {
+    "message": "リンク"
+  },
+  "linksInPage": {
+    "message": "ページ内リンク"
+  },
+  "get": {
+    "message": "取得する"
+  },
+  "csv": {
+    "message": "CSV"
+  },
+  "tsv": {
+    "message": "TSV"
   }
 }
