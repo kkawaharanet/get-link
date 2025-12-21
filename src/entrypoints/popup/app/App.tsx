@@ -147,6 +147,7 @@ export function App() {
             onClick={() => setActiveTab(appTab)}
             className={styles.tabButton}
             disabled={appTab === activeTab}
+            key={appTab}
           >
             {browser.i18n.getMessage(appTab)}
           </button>
