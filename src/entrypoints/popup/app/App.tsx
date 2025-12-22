@@ -153,6 +153,8 @@ export function App() {
           </button>
         ))}
       </div>
+      {activeTab === "link" && <LinkTab value={text} />}
+      {activeTab === "linksInPage" && <LinksInPageTab />}
       <dl className={styles.preferencesContainer}>
         <dt>{browser.i18n.getMessage("format")}</dt>
         <dd>
@@ -182,8 +184,6 @@ export function App() {
           </div>
         </dd>
       </dl>
-      {activeTab === "link" && <LinkTab value={text} />}
-      {activeTab === "linksInPage" && <LinksInPageTab />}
     </div>
   );
 }

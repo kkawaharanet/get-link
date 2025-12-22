@@ -1,28 +1,35 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 8px;
   gap: 8px;
+  padding: 8px;
 }
 
 .tabContainer {
   display: flex;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tabButton {
+  position: relative;
+  bottom: -1px;
   flex: 1;
-
-  font-size: 100%;
-  background-color: transparent;
-  border-radius: 4px;
-  border: none;
   padding: 4px;
+  font-size: 100%;
+  color: var(--color-border);
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 
   &:disabled {
-    background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-foreground);
     cursor: default;
+    border-top: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-background);
+    border-left: 1px solid var(--color-border);
+    border-radius: 4px 4px 0 0;
   }
 }
 
@@ -30,6 +37,8 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
 }
 
 .checkboxContainer {

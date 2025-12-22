@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-zA-Z0-9]*$",
+      {
+        "message": "クラス名は lowerCamelCase で命名してください。"
+      }
+    ],
+    "keyframes-name-pattern": [
+      "^[a-z][a-zA-Z0-9]*$",
+      {
+        "message": "クラス名は lowerCamelCase で命名してください。"
+      }
+    ]
+  },
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"]
+}

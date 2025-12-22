@@ -1,18 +1,23 @@
 :root {
+  --color-background: #fff;
+  --color-border: #7f7f7f;
+  --color-foreground: #1f1f1f;
   --color-primary: #1a73e8;
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: var(--color-foreground);
 }
 
 body {
   display: flex;
+  background-color: var(--color-background);
 }
 
 #root {
-  min-width: 300px;
   flex: 1;
+  min-width: 300px;
 }
