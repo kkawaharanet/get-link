@@ -38,7 +38,7 @@ function LinkTab(props: LinkTabProps) {
         value={props.value}
         onFocus={handleFocus}
         className={styles.input}
-        rows={8}
+        rows={4}
         readOnly
       />
       <button onClick={() => handleCopy(props.value)}>
@@ -96,6 +96,7 @@ function LinksInPageTab() {
         onFocus={handleFocus}
         className={styles.input}
         rows={8}
+        wrap="off"
         readOnly
       />
       <button onClick={() => handleCopy(value)}>
