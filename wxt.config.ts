@@ -6,7 +6,7 @@ export default defineConfig({
   srcDir: "src",
   manifest: {
     name: "__MSG_applicationName__",
-    version: "3.0.0",
+    version: "3.1.0",
     description: "__MSG_description__",
     default_locale: "ja",
     permissions: ["scripting", "storage", "activeTab"],
