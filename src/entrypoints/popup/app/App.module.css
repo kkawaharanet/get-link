@@ -33,6 +33,31 @@
   }
 }
 
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.linkRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.linkRowControls {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 4px;
+  align-items: stretch;
+}
+
+.linkTextarea {
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+}
+
 .preferencesContainer {
   display: grid;
   grid-template-columns: max-content 1fr;

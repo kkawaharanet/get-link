@@ -15,18 +15,18 @@
     "postinstall": "wxt prepare"
   },
   "dependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-error-boundary": "^6.0.0"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-error-boundary": "^6.1.1"
   },
   "devDependencies": {
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@wxt-dev/module-react": "^1.1.5",
+    "@wxt-dev/module-react": "^1.2.2",
     "stylelint": "^16.26.1",
     "stylelint-config-recess-order": "^7.4.0",
     "stylelint-config-standard-scss": "^16.0.0",
-    "typescript": "^5.9.3",
-    "wxt": "^0.20.13"
+    "typescript": "^6.0.2",
+    "wxt": "^0.20.20"
   }
 }

@@ -11,40 +11,56 @@ const APP_TABS = ["link", "linksInPage"] as const;
 type AppTab = (typeof APP_TABS)[number];
 
 interface LinkTabProps {
-  value: string;
+  link: Link;
+  removeQueryParameters: boolean;
 }
 
-function LinkTab(props: LinkTabProps) {
-  const preferencesService = use(PreferencesServiceContext);
-  const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    setCopied(false);
-  }, [preferencesService.preferences]);
-
-  function handleFocus(event: React.FocusEvent<HTMLTextAreaElement>) {
+function LinkTab({ link, removeQueryParameters }: LinkTabProps) {
+  function handleFocus(
+    event: React.FocusEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) {
     event.target.select();
   }
 
   function handleCopy(text: string) {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-    });
+    navigator.clipboard.writeText(text);
   }
 
   return (
-    <>
-      <textarea
-        value={props.value}
-        onFocus={handleFocus}
-        className={styles.input}
-        rows={4}
-        readOnly
-      />
-      <button onClick={() => handleCopy(props.value)}>
-        {browser.i18n.getMessage(copied ? "copied" : "copy")}
-      </button>
-    </>
+    <div className={styles.linkList}>
+      {LINK_TYPES.map((type) => {
+        const text = linkToString(link, type, removeQueryParameters);
+        return (
+          <div key={type} className={styles.linkRow}>
+            <span className={styles.linkLabel}>
+              {browser.i18n.getMessage(type)}
+            </span>
+            <div className={styles.linkRowControls}>
+              {type === "plaintext" ? (
+                <textarea
+                  value={text}
+                  className={styles.linkTextarea}
+                  rows={2}
+                  readOnly
+                  onFocus={handleFocus}
+                />
+              ) : (
+                <input
+                  type="text"
+                  value={text}
+                  className={styles.linkTextarea}
+                  readOnly
+                  onFocus={handleFocus}
+                />
+              )}
+              <button onClick={() => handleCopy(text)}>
+                {browser.i18n.getMessage("copy")}
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -71,7 +87,7 @@ function LinksInPageTab() {
     setLinks(await getLinksInTab());
   }
 
-  if (links?.length <= 0) {
+  if (links.length <= 0) {
     return (
       <button onClick={handleGetLinksClick}>
         {browser.i18n.getMessage("get")}
@@ -84,8 +100,8 @@ function LinksInPageTab() {
       linkToString(
         l,
         preferencesService.preferences.linkType,
-        !preferencesService.preferences.queryParameters
-      )
+        !preferencesService.preferences.queryParameters,
+      ),
     )
     .join("\n");
 
@@ -134,12 +150,6 @@ export function App() {
     );
   }
 
-  const text = linkToString(
-    linkService.link,
-    preferencesService.preferences.linkType,
-    !preferencesService.preferences.queryParameters
-  );
-
   return (
     <div className={styles.container}>
       <div className={styles.tabContainer}>
@@ -154,22 +164,33 @@ export function App() {
           </button>
         ))}
       </div>
-      {activeTab === "link" && <LinkTab value={text} />}
+      {activeTab === "link" && (
+        <LinkTab
+          link={linkService.link}
+          removeQueryParameters={
+            !preferencesService.preferences.queryParameters
+          }
+        />
+      )}
       {activeTab === "linksInPage" && <LinksInPageTab />}
       <dl className={styles.preferencesContainer}>
-        <dt>{browser.i18n.getMessage("format")}</dt>
-        <dd>
-          <select
-            defaultValue={preferencesService.preferences.linkType}
-            onChange={handleChangeLinkType}
-          >
-            {LINK_TYPES.map((linkType) => (
-              <option value={linkType} key={linkType}>
-                {browser.i18n.getMessage(linkType)}
-              </option>
-            ))}
-          </select>
-        </dd>
+        {activeTab === "linksInPage" && (
+          <>
+            <dt>{browser.i18n.getMessage("format")}</dt>
+            <dd>
+              <select
+                value={preferencesService.preferences.linkType}
+                onChange={handleChangeLinkType}
+              >
+                {LINK_TYPES.map((linkType) => (
+                  <option value={linkType} key={linkType}>
+                    {browser.i18n.getMessage(linkType)}
+                  </option>
+                ))}
+              </select>
+            </dd>
+          </>
+        )}
         <dt>{browser.i18n.getMessage("queryParameters")}</dt>
         <dd>
           <div className={styles.checkboxContainer}>
