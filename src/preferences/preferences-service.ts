@@ -1,10 +1,5 @@
 import { DEFAULT_PREFERENCES, Preferences } from "./preferences";
 
-export interface IPreferencesServiceState {
-  loading: boolean;
-  preferences: Preferences;
-}
-
 export interface IPreferencesService {
   loading: boolean;
   preferences: Preferences;
@@ -13,7 +8,7 @@ export interface IPreferencesService {
 
 export function usePreferencesService(): IPreferencesService {
   const key = "preferences";
-  const [state, setState] = useState<IPreferencesServiceState>({
+  const [state, setState] = useState({
     loading: true,
     preferences: DEFAULT_PREFERENCES,
   });
@@ -28,9 +23,7 @@ export function usePreferencesService(): IPreferencesService {
 
   function setPreferences(value: Preferences): Promise<void> {
     return new Promise((resolve) => {
-      const obj: any = {};
-      obj[key] = value;
-      browser.storage.local.set(obj, () => {
+      browser.storage.local.set({ [key]: value }, () => {
         setState((v) => ({ ...v, preferences: value }));
         resolve();
       });
