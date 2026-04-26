@@ -49,5 +49,23 @@
   },
   "tsv": {
     "message": "TSV"
+  },
+  "copyAsPlaintext": {
+    "message": "Copy as Plain text"
+  },
+  "copyAsCsv": {
+    "message": "Copy as CSV"
+  },
+  "copyAsTsv": {
+    "message": "Copy as TSV"
+  },
+  "copyAsHtml": {
+    "message": "Copy as HTML"
+  },
+  "copyAsMarkdown": {
+    "message": "Copy as Markdown"
+  },
+  "copyAsTextile": {
+    "message": "Copy as Textile"
   }
 }

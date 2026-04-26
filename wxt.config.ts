@@ -6,10 +6,10 @@ export default defineConfig({
   srcDir: "src",
   manifest: {
     name: "__MSG_applicationName__",
-    version: "3.1.0",
+    version: "3.2.0",
     description: "__MSG_description__",
     default_locale: "ja",
-    permissions: ["scripting", "storage", "activeTab"],
+    permissions: ["activeTab", "contextMenus", "scripting", "storage"],
     action: {
       default_title: "リンク取得",
       default_popup: "index.html",
