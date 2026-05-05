@@ -1,5 +1,5 @@
 import { Link } from "@/link/link";
-import { linkToString } from "@/link/link-functions";
+import { linkToString } from "@/link/link-format";
 import { LINK_TYPES, LinkType } from "@/link/link-type";
 import { DEFAULT_PREFERENCES, Preferences } from "@/preferences/preferences";
 

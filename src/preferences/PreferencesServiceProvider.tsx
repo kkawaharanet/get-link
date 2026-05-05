@@ -1,34 +1,22 @@
 import React, { createContext } from "react";
 import { DEFAULT_PREFERENCES } from "./preferences";
-import {
-  IPreferencesService,
-  usePreferencesService,
-} from "./preferences-service";
+import { IPreferencesService, usePreferencesService } from "./preferences-service";
 
 const defaultPreferencesService: IPreferencesService = {
-  loading: false,
   preferences: DEFAULT_PREFERENCES,
   setPreferences: () => {
     throw new Error("Function not implemented.");
   },
 };
 
-export const PreferencesServiceContext = createContext(
-  defaultPreferencesService
-);
+export const PreferencesServiceContext = createContext(defaultPreferencesService);
 
-export interface PreferencesServiceProviderProps {
-  children: React.ReactNode;
-}
-
-export function PreferencesServiceProvider(
-  props: PreferencesServiceProviderProps
-) {
-  const PreferencesService = usePreferencesService();
+export function PreferencesServiceProvider({ children }: { children: React.ReactNode }) {
+  const preferencesService = usePreferencesService();
 
   return (
-    <PreferencesServiceContext value={PreferencesService}>
-      {props.children}
+    <PreferencesServiceContext value={preferencesService}>
+      {children}
     </PreferencesServiceContext>
   );
 }
