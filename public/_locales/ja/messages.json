@@ -8,6 +8,27 @@
   "copy": {
     "message": "コピー"
   },
+  "copyAsCsv": {
+    "message": "CSVとしてコピー"
+  },
+  "copyAsHtml": {
+    "message": "HTMLとしてコピー"
+  },
+  "copyAsMarkdown": {
+    "message": "Markdownとしてコピー"
+  },
+  "copyAsPlaintext": {
+    "message": "プレーンテキストとしてコピー"
+  },
+  "copyAsTextile": {
+    "message": "Textileとしてコピー"
+  },
+  "copyAsTsv": {
+    "message": "TSVとしてコピー"
+  },
+  "csv": {
+    "message": "CSV"
+  },
   "description": {
     "message": "閲覧中のページのURLとタイトルを取得します。"
   },
@@ -17,14 +38,23 @@
   "format": {
     "message": "形式"
   },
+  "get": {
+    "message": "取得する"
+  },
   "html": {
     "message": "HTML"
   },
-  "loading": {
-    "message": "読み込み中"
+  "link": {
+    "message": "リンク"
+  },
+  "linksInPage": {
+    "message": "ページ内リンク"
   },
   "markdown": {
     "message": "Markdown"
+  },
+  "nothingHere": {
+    "message": "何もありません"
   },
   "plaintext": {
     "message": "プレーンテキスト"
@@ -35,37 +65,7 @@
   "textile": {
     "message": "Textile"
   },
-  "link": {
-    "message": "リンク"
-  },
-  "linksInPage": {
-    "message": "ページ内リンク"
-  },
-  "get": {
-    "message": "取得する"
-  },
-  "csv": {
-    "message": "CSV"
-  },
   "tsv": {
     "message": "TSV"
-  },
-  "copyAsPlaintext": {
-    "message": "プレーンテキストとしてコピー"
-  },
-  "copyAsCsv": {
-    "message": "CSVとしてコピー"
-  },
-  "copyAsTsv": {
-    "message": "TSVとしてコピー"
-  },
-  "copyAsHtml": {
-    "message": "HTMLとしてコピー"
-  },
-  "copyAsMarkdown": {
-    "message": "Markdownとしてコピー"
-  },
-  "copyAsTextile": {
-    "message": "Textileとしてコピー"
   }
 }

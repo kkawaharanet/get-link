@@ -8,6 +8,27 @@
   "copy": {
     "message": "Copy"
   },
+  "copyAsCsv": {
+    "message": "Copy as CSV"
+  },
+  "copyAsHtml": {
+    "message": "Copy as HTML"
+  },
+  "copyAsMarkdown": {
+    "message": "Copy as Markdown"
+  },
+  "copyAsPlaintext": {
+    "message": "Copy as Plain text"
+  },
+  "copyAsTextile": {
+    "message": "Copy as Textile"
+  },
+  "copyAsTsv": {
+    "message": "Copy as TSV"
+  },
+  "csv": {
+    "message": "CSV"
+  },
   "description": {
     "message": "Get links"
   },
@@ -17,14 +38,23 @@
   "format": {
     "message": "Format"
   },
+  "get": {
+    "message": "Get"
+  },
   "html": {
     "message": "HTML"
   },
-  "loading": {
-    "message": "Loading"
+  "link": {
+    "message": "Link"
+  },
+  "linksInPage": {
+    "message": "Links in page"
   },
   "markdown": {
     "message": "Markdown"
+  },
+  "nothingHere": {
+    "message": "Nothing here"
   },
   "plaintext": {
     "message": "Plain text"
@@ -35,37 +65,7 @@
   "textile": {
     "message": "Textile"
   },
-  "link": {
-    "message": "Link"
-  },
-  "linksInPage": {
-    "message": "Links in page"
-  },
-  "get": {
-    "message": "Get"
-  },
-  "csv": {
-    "message": "CSV"
-  },
   "tsv": {
     "message": "TSV"
-  },
-  "copyAsPlaintext": {
-    "message": "Copy as Plain text"
-  },
-  "copyAsCsv": {
-    "message": "Copy as CSV"
-  },
-  "copyAsTsv": {
-    "message": "Copy as TSV"
-  },
-  "copyAsHtml": {
-    "message": "Copy as HTML"
-  },
-  "copyAsMarkdown": {
-    "message": "Copy as Markdown"
-  },
-  "copyAsTextile": {
-    "message": "Copy as Textile"
   }
 }

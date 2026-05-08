@@ -1,7 +1,7 @@
-import { getLinksInTab } from "@/link/link-functions";
-import { linkToString } from "@/link/link-format";
-import { LINK_TYPES, LinkType } from "@/link/link-type";
 import { Link } from "@/link/link";
+import { linkToString } from "@/link/link-format";
+import { getLinksInTab } from "@/link/link-functions";
+import { LINK_TYPES, LinkType } from "@/link/link-type";
 import { PreferencesServiceContext } from "@/preferences/PreferencesServiceProvider";
 import { ChangeEvent, use } from "react";
 import styles from "./App.module.css";
@@ -44,7 +44,11 @@ export function LinksInPageTab() {
   }
 
   if (links === null) {
-    return null;
+    return (
+      <>
+        <p>{browser.i18n.getMessage("nothingHere")}</p>
+      </>
+    );
   }
 
   const value = links
