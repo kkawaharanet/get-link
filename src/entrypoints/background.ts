@@ -3,22 +3,15 @@ import { linkToString } from "@/link/link-format";
 import { LINK_TYPES, LinkType } from "@/link/link-type";
 import { DEFAULT_PREFERENCES, Preferences } from "@/preferences/preferences";
 
-async function copyToClipboard(text: string) {
-  const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
-  if (!tab.id) {
-    return;
-  }
-
+async function copyToClipboard(tabId: number, text: string) {
   await browser.scripting.executeScript({
-    target: { tabId: tab.id },
+    target: { tabId },
     func: (t) => navigator.clipboard.writeText(t),
     args: [text],
   });
 }
 
 export default defineBackground(() => {
-  let lastLinkText = "";
-
   const copyLinkParent = "copyLinkParent";
 
   browser.contextMenus.create({
@@ -46,25 +39,46 @@ export default defineBackground(() => {
     });
   }
 
-  // ChromeだとcontextMenus.onClicked.addListenerからリンクテキストを取得することができないので
-  // 右クリックしたときにリンクテキストを保存しておく
-  browser.runtime.onMessage.addListener((message) => {
-    if (message.type === "link-text") {
-      lastLinkText = message.text;
+  browser.contextMenus.onClicked.addListener(async (info, tab) => {
+    // コンテキストメニューがタブ以外から発火したとき
+    // PDFビューアなど特殊なページから発火したとき、何もしない
+    if (!tab?.id) {
+      return;
     }
-  });
 
-  browser.contextMenus.onClicked.addListener(async (info, _tab) => {
+    // 設定を取得する
     const result = await browser.storage.local.get("preferences");
     const preferences: Preferences =
       (result.preferences as Preferences) ?? DEFAULT_PREFERENCES;
 
+    // ユーザーが選択したリンク形式を取得する
     const linkType = LINK_TYPES.find((t) => t === info.menuItemId);
     if (!linkType) {
       return;
     }
 
-    const link: Link = { url: info.linkUrl ?? "", title: lastLinkText };
-    copyToClipboard(linkToString(link, linkType, preferences.queryParameters));
+    // 右クリック時のリンクURLを取得する
+    const linkUrl = info.linkUrl ?? "";
+
+    // リンクテキストはinfoから取得できないのでスクリプトを実行して取得する
+    const results = await browser.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: (url) => {
+        const anchors = Array.from(
+          document.querySelectorAll("a[href]"),
+        ) as HTMLAnchorElement[];
+        const anchor = anchors.find((a) => a.href === url);
+        return anchor ? anchor.innerText.trim() : "";
+      },
+      args: [linkUrl],
+    });
+    const linkText = results[0]?.result ?? "";
+
+    // リンクをクリップボードへコピーする
+    const link: Link = { url: linkUrl, title: linkText };
+    copyToClipboard(
+      tab.id,
+      linkToString(link, linkType, preferences.queryParameters),
+    );
   });
 });

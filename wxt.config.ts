@@ -6,10 +6,15 @@ export default defineConfig({
   srcDir: "src",
   manifest: {
     name: "__MSG_applicationName__",
-    version: "3.4.0",
+    version: "3.5.0",
     description: "__MSG_description__",
     default_locale: "ja",
-    permissions: ["activeTab", "contextMenus", "scripting", "storage"],
+    permissions: [
+      "activeTab", // backgroundでのscripting.executeScript()に必要
+      "contextMenus", // 右クリックメニューに必要
+      "scripting", // scripting.executeScript()を使ったリンクテキスト取得に必要
+      "storage", // 設定の保存に必要
+    ],
     action: {
       default_title: "リンク取得",
       default_popup: "index.html",
