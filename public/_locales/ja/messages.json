@@ -30,7 +30,7 @@
     "message": "CSV"
   },
   "description": {
-    "message": "閲覧中のページのURLとタイトルを取得します。"
+    "message": "現在のページのURLとタイトルをMarkdownやHTMLなどの形式でクリップボードにコピーします。"
   },
   "enable": {
     "message": "有効にする"
@@ -38,16 +38,13 @@
   "format": {
     "message": "形式"
   },
-  "get": {
-    "message": "取得する"
-  },
   "html": {
     "message": "HTML"
   },
   "link": {
     "message": "リンク"
   },
-  "linksInPage": {
+  "pageLinks": {
     "message": "ページ内リンク"
   },
   "markdown": {

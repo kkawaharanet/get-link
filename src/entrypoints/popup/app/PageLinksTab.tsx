@@ -10,7 +10,7 @@ function handleFocus(event: React.FocusEvent<HTMLTextAreaElement>) {
   event.target.select();
 }
 
-export function LinksInPageTab() {
+export function PageLinksTab() {
   const preferencesService = use(PreferencesServiceContext);
   const [links, setLinks] = useState<Link[] | null>(null);
   const [copied, setCopied] = useState(false);

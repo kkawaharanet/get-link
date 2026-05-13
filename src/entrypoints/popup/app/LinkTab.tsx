@@ -1,5 +1,5 @@
 import { linkToString } from "@/link/link-format";
-import { LINK_TYPES, LinkType } from "@/link/link-type";
+import { LINK_TYPES } from "@/link/link-type";
 import { LinkServiceContext } from "@/link/LinkServiceProvider";
 import { PreferencesServiceContext } from "@/preferences/PreferencesServiceProvider";
 import { ChangeEvent, use } from "react";

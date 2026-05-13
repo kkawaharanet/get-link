@@ -1,6 +1,6 @@
 {
   "applicationName": {
-    "message": "Get links"
+    "message": "Copy Link"
   },
   "copied": {
     "message": "Copied"
@@ -18,7 +18,7 @@
     "message": "Copy as Markdown"
   },
   "copyAsPlaintext": {
-    "message": "Copy as Plain text"
+    "message": "Copy as Plain Text"
   },
   "copyAsTextile": {
     "message": "Copy as Textile"
@@ -30,7 +30,7 @@
     "message": "CSV"
   },
   "description": {
-    "message": "Get links"
+    "message": "Copy the current page's URL and title to your clipboard in Markdown, HTML, and more."
   },
   "enable": {
     "message": "Enable"
@@ -38,29 +38,26 @@
   "format": {
     "message": "Format"
   },
-  "get": {
-    "message": "Get"
-  },
   "html": {
     "message": "HTML"
   },
   "link": {
     "message": "Link"
   },
-  "linksInPage": {
-    "message": "Links in page"
+  "pageLinks": {
+    "message": "Page Links"
   },
   "markdown": {
     "message": "Markdown"
   },
   "nothingHere": {
-    "message": "Nothing here"
+    "message": "Nothing here."
   },
   "plaintext": {
-    "message": "Plain text"
+    "message": "Plain Text"
   },
   "queryParameters": {
-    "message": "Query parameters"
+    "message": "Query Parameters"
   },
   "textile": {
     "message": "Textile"

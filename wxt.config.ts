@@ -6,7 +6,7 @@ export default defineConfig({
   srcDir: "src",
   manifest: {
     name: "__MSG_applicationName__",
-    version: "3.5.0",
+    version: "3.5.1",
     description: "__MSG_description__",
     default_locale: "ja",
     permissions: [
@@ -16,7 +16,7 @@ export default defineConfig({
       "storage", // 設定の保存に必要
     ],
     action: {
-      default_title: "リンク取得",
+      default_title: "__MSG_applicationName__",
       default_popup: "index.html",
       default_icon: {
         "16": "icon/16.png",

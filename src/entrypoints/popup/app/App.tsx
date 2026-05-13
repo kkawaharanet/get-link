@@ -1,9 +1,9 @@
 import { LINK_TYPES } from "@/link/link-type";
 import styles from "./App.module.css";
 import { LinkTab } from "./LinkTab";
-import { LinksInPageTab } from "./LinksInPageTab";
+import { PageLinksTab } from "./PageLinksTab";
 
-const APP_TABS = ["link", "linksInPage"] as const;
+const APP_TABS = ["link", "pageLinks"] as const;
 type AppTab = (typeof APP_TABS)[number];
 
 export function AppSkeleton() {
@@ -69,7 +69,7 @@ export function App() {
         ))}
       </div>
       {activeTab === "link" && <LinkTab />}
-      {activeTab === "linksInPage" && <LinksInPageTab />}
+      {activeTab === "pageLinks" && <PageLinksTab />}
     </div>
   );
 }
