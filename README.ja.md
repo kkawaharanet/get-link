@@ -8,7 +8,7 @@ Chromium系のWebブラウザで使用できる。
 
 ## インストール
 
-[リンク取得 - Chrome ウェブストア](https://chromewebstore.google.com/detail/%E3%83%AA%E3%83%B3%E3%82%AF%E5%8F%96%E5%BE%97/jjojpplkebencpghmklalgeiemcapkpe)
+[リンク取得 - Chrome ウェブストア](https://chromewebstore.google.com/detail/copy-link/jjojpplkebencpghmklalgeiemcapkpe)
 
 ## ビルド
 
