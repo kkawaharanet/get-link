@@ -8,7 +8,7 @@ export default defineConfig({
     name: "__MSG_applicationName__",
     version: "3.5.1",
     description: "__MSG_description__",
-    default_locale: "ja",
+    default_locale: "en",
     permissions: [
       "activeTab", // backgroundでのscripting.executeScript()に必要
       "contextMenus", // 右クリックメニューに必要
